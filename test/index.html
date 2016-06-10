@@ -1,0 +1,34 @@
+<!-- This html is only if you want to run the test in a browser explicitly.
+     It's needed a http:// protocol. Coverage does not work with file:// protocol' 
+     Coverage is using blanket.
+     If you run test with karma, coverage is using Istambul by default -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests explicitly in a browser</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.5.3/mocha.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="mocha"></div>
+  
+  <script src="../src/app.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.5.3/mocha.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+  <!--script src="../node_modules/blanket/dist/mocha/blanket_mocha.js"></script-->
+
+  <script>mocha.setup('bdd')</script>
+  
+ 
+  <script src="../src/app.js" data-cover></script>
+  
+  
+  <script src="app.spec.js"></script>
+  <script>
+    mocha.run();
+  </script>
+</body>
+</html>
+
