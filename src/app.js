@@ -20,6 +20,6 @@ if (btnAdd && btnSub) {
     });
 
     btnSub.addEventListener('click', function (ev) {
-        document.querySelector('span').textContent = subtract(1,2);
+        document.querySelector('span').textContent = subtract(8,2);
     });
 }
