@@ -13,10 +13,17 @@ gulp.task('test', function (done) {
   }, done).start();
 });
 
+/**
+ * Serve the app and open it
+ */
 gulp.task('serve', ['watch', 'connect'], function() {
   opn('http://localhost:8080');
 });
 
+
+/**
+ * Create web server
+ */
 gulp.task('connect', function() {
   connect.server({
     root: '.',
@@ -25,6 +32,9 @@ gulp.task('connect', function() {
   });
 });
 
+/**
+ * Watch js and index file to livereload
+ */
 gulp.task('watch', function() {
   gulp.watch(['./index.html', './src/*.js'], function(event) {
     console.log('File ' + event.path + ' ' + event.type + '. Reloading...');
@@ -32,4 +42,7 @@ gulp.task('watch', function() {
   });
 });
 
+/**
+ * Defualt task
+ */
 gulp.task('default', ['serve']);
