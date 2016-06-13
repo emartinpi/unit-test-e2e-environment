@@ -43,6 +43,6 @@ gulp.task('watch', function() {
 });
 
 /**
- * Defualt task
+ * Default task
  */
 gulp.task('default', ['serve']);
