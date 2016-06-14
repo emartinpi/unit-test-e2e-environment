@@ -17,7 +17,7 @@ module.exports = function(config) {
     files: [
       'https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js',
       'src/**/*.js',
-      'test/**/*.js'
+      'specs/**/*.js'
     ],
     
     // plugins
