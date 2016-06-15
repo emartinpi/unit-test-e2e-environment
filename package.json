@@ -12,6 +12,7 @@
     "chai": "*",
     "gulp": "^3.9.1",
     "gulp-connect": "^4.0.0",
+    "gulp-nightwatch": "^0.2.9",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
     "karma-coverage": "^1.0.0",

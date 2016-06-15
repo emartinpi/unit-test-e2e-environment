@@ -1,16 +1,27 @@
-var gulp    = require('gulp'),
-    Server  = require('karma').Server,
-    connect = require('gulp-connect'),
-    opn     = require('opn');
+var gulp       = require('gulp'),
+    Server     = require('karma').Server,
+    connect    = require('gulp-connect'),
+    opn        = require('opn'),
+    nightwatch = require('gulp-nightwatch');
 
 /**
- * Run test once and exit
+ * Run unit test through karma
  */
-gulp.task('test', function (done) {
+gulp.task('specs', function(done) {
   new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
   }, done).start();
+});
+
+/**
+ * Run E2E test through Selenium
+ */
+gulp.task('e2e', ['connect'], function(cb) {
+  return gulp.src('')
+    .pipe(nightwatch({
+      configFile: 'nightwatch.json',
+      cliArgs: ['--env chrome_env']}));
 });
 
 /**
