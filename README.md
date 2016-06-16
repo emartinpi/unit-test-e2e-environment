@@ -52,8 +52,18 @@ This will run the app on port 8080
     $ gulp specs
 
 ## Running E2E tests
+1. Create a folder for install Selenium Server and the ChromeDriver in your project, e.g.: *bin/selenium* and *bin/chromedriver*
+ 
+        $ mkdir -p ./bin/selenium
+        $ mkdir ./bin/chromedriver
 
-    $ gulp e2e 
+2. Install Selenium Server. Download the latest version of **selenium-server-standalone-{VERSION}.jar** file from the [Selenium downloads page](http://selenium-release.storage.googleapis.com/index.html) and place it on *bin/selenium* folder
+
+3. Install ChromeDriver. [Download the latest version of WebDriver](http://chromedriver.storage.googleapis.com/index.html) if you want to run the e2e test under Chrome browser environment (You must have installed Chrome browser as well) and place it on *bin/chromedriver* folder
+
+4. Running the e2e tests
+    
+        $ gulp e2e 
 
 # Getting started with Unit Testing
 
