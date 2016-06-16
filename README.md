@@ -1,6 +1,6 @@
 # How to set up an environment with unit testing tools (Mocha & Karma) and E2E testing tools (Nightwatch & Selenium)
 
-This guide shows you the basics to create an environmnet where you can test your code with the following tools:
+This guide shows you the basics to create an environment where you can test your code with the following tools:
 
 
 1. Global tools:
