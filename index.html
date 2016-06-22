@@ -5,27 +5,88 @@
         <title>App</title>
         <link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
         <style>
+            * {
+                box-sizing: border-box
+            }
+
             html, body {
-                font-family: Tahoma, Verdana, sans-serif;
+                font-family: Helvetica, Arial, sans-serif;
                 font-size: 1em;
                 font-style: normal;
                 font-variant: normal;
-                font-weight: 500;
-                line-height: 26.4px;
+                color: #414848;
             }
-            button {
-                display: block;
-                margin: 1em;
+
+            div {
+                position: relative;
+                font-size: 80px;
+                margin: 30px
             }
+
+            .inputs {
+                width: 200px;
+                height: 150px;
+                padding: 15px 25px;
+                
+                font-size: 80px;
+                color: #414848;
+                text-shadow: 1px 1px 0 rgba(256, 256, 256, 1.0);
+                background: #FFF;
+                border: 1px solid #FFF;
+                border-radius: 5px;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
+            }
+
+            .inputs:focus {
+                background: #DFE9EC;
+                color: #414848;
+                box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
+                outline: 0;
+            }
+
+            .inputs:hover {
+                background: #DFE9EC;
+                color: #414848;
+            }
+
+            .myButton {
+                box-shadow:inset 0px 1px 0px 0px #ffffff;
+                background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+                background-color:#ffffff;
+                border-radius:5px;
+                border:1px solid #dcdcdc;
+                display:inline-block;
+                cursor:pointer;
+                color:#666666;
+                font-family:Arial;
+                font-size:15px;
+                padding:32px 76px;
+                text-decoration:none;
+                text-shadow:0px 1px 0px #ffffff;
+                position: absolute;
+                bottom: 0;
+                margin: 0 20px;
+            }
+
+            .myButton:active {
+                background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+                background-color:#f6f6f6;
+            }
+
         </style>
     </head>
     <body>
-        
-        <button id="btnAdd">Click me! (1+2)</button>
-        <button id="btnSub">Click me! (8-2)</button>
-        <hr>
-        <div>Resultado: <span id="result"></span></div>
- 
+        <div>
+            <input id="input1" type="text" class="inputs"/> 
+            <input id="input2" type="text" class="inputs"/> 
+            <a href="#" id="calculate" class="myButton">Calculate</a>
+        </div>
+        <div id="resAdd"></div>
+        <div id="resSub"></div>
+        <div id="resMul"></div>
+        <div id="resDiv"></div>
+
         <script src="src/app.js"></script>
     </body>
 </html>
+
