@@ -19,12 +19,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
   <!--script src="../node_modules/blanket/dist/mocha/blanket_mocha.js"></script-->
 
-  <script>mocha.setup('bdd')</script>
+  <script>
+      mocha.setup({
+          ui: 'bdd'
+      });
+  </script>
   
  
   <script src="../src/app.js" data-cover></script>
   
   
+  <script src="../src/math.js"></script>
+  <script src="../src/app.js"></script>
   <script src="app.spec.js"></script>
   <script>
     mocha.run();
