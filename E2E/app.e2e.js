@@ -14,24 +14,23 @@ describe('Demo E2E', function() {
       });
     });
 
-    it('add behaviour', function(client) {
-      client
-        .expect.element('#btnAdd').to.be.present.before(1000);
+    it('ui ready', function(client) {
+      client.expect.element('#input1').to.be.present.before(1000);
+      client.expect.element('#input2').to.be.present.before(1000);
+      client.expect.element('#calculate').to.be.present.before(1000);
+    })
 
+    it('add/subtract/multiply/divide behaviours', function(client, done) {
       client
-        .click('#btnAdd')
-        .pause(100)
-        .expect.element('#result').text.to.equal('3');
-    });
-
-    it('subtract behaviour', function(client) {
-      client
-        .expect.element('#btnSub').to.be.present.before(1000);
-
-      client
-        .click('#btnSub')
-        .pause(100)
-        .expect.element('#result').text.to.equal('6');
+        .setValue('#input1', 12)
+        .setValue('#input2', 3)
+        .click('#calculate')
+        .pause(1500);
+        
+        client.expect.element('#resAdd').text.to.equal('12 + 3 = 15');
+        client.expect.element('#resSub').text.to.equal('12 - 3 = 9');
+        client.expect.element('#resMul').text.to.equal('12 * 3 = 36');
+        client.expect.element('#resDiv').text.to.equal('12 / 3 = 4');
     });
 });
 
