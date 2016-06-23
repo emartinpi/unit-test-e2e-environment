@@ -52,5 +52,13 @@ function divide(n1, n2) {
         throw new Error('Parameters must be numbers');
     }
 
+    if (n2 === 0) {
+        function DivideByZeroError(message) {
+            this.message = message;
+        }
+        DivideByZeroError.prototype = new Error();
+        throw new DivideByZeroError('Divide by zero is not posible');
+    }
+
     return Math.round(n1 / n2 * 100) / 100
 }
