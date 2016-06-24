@@ -30,7 +30,7 @@ This guide shows you the basics to create an environment where you can test your
 
     $ npm install
 
-The command above  will install the next devDependencies of package.json file among the others:
+The command above  will install the next devDependencies from package.json file among the others:
 
 - [karma-chrome-launcher](https://github.com/karma-runner/karma-chrome-launcher), a plugin launcher for Chrome browser
 - [karma-phantomjs-launcher](https://github.com/karma-runner/karma-phantomjs-launcher), a plugin launcher for PhamtonJS browser
@@ -59,7 +59,7 @@ This will run the app on port 8080
 
 2. Install Selenium Server. Download the latest version of **selenium-server-standalone-{VERSION}.jar** file from the [Selenium downloads page](http://selenium-release.storage.googleapis.com/index.html) and place it on *bin/selenium* folder
 
-3. Install ChromeDriver. [Download the latest version of WebDriver](http://chromedriver.storage.googleapis.com/index.html) if you want to run the e2e test under Chrome browser environment (You must have installed Chrome browser as well) and place it on *bin/chromedriver* folder
+3. Install ChromeDriver. Download the latest version of [WebDriver](http://chromedriver.storage.googleapis.com/index.html) if you want to run the e2e test under Chrome browser environment (You must have installed Chrome browser as well) and place it on *bin/chromedriver* folder
 
 4. Running the e2e tests
     
@@ -140,7 +140,7 @@ Mocha's interfaces system allows developers to choose their style. Mocha has BDD
 
 ## 3. Asertions
 
-Mocha allows you to user any library you want. We use [Chai](http://chaijs.com/) since allows you expect(), assert() and should() style assertions.
+Mocha allows you to use any library you want. We use [Chai](http://chaijs.com/) since allows you expect(), assert() and should() style assertions.
 Chai has several interfaces that allow the developer to choose the most confortable. The chain-capable BDD styles provide an expressive language & readable style,
 while the TDD assert style provides a more classical feel.
 
@@ -208,15 +208,20 @@ before loading the test scripts, running them with *mocha.run()*
     <body>
         <div id="mocha"></div>
 
+        
+
         <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
 
         <script>
             mocha.setup({
-                ui: 'tdd'
+                ui: 'bdd'
             });
         </script>
-        <script src="test.js"></script>
+
+        <script src="../src/math.js"></script>
+        <script src="../src/app.js"></script>
+        <script src="app.spec.js"></script>
         <script>
             mocha.run();
         </script>
@@ -344,14 +349,14 @@ If the server is on the same machine where Nightwatch is running, it can be star
 
 ## 2. Nightwatch
 
-Nightwatch is an easy to use Node.js based E2E testing solution. It uses Selenium WebDriver API to perform commands and assertions on DOM elements. It works by sending HTTP requests to the Selenium server with the right parameters and interpreting the response
+Nightwatch is an easy to use Node.js based E2E testing solution. It uses Selenium WebDriver API to perform commands and assertions on DOM elements. It works by sending HTTP requests to the Selenium server with the right parameters and interpreting the response.
 If you would like to try Nightwatch in Node.js:
 
     $ npm install -g nightwatch
 
 ### Configuration
 
-Nightwatch expects a configuration file to be passed, using by default a *nightwatch.json* file in the project's root folder
+Nightwatch expects a configuration file to be passed, using by default a *nightwatch.json* file in the project's root folder.
 Note: Check out *nightwatch.json* file in this project or [Nightwatch Web Page](http://nightwatchjs.org/guide#settings-file) for more information about its configure
 
 Some of the most important:
@@ -365,7 +370,7 @@ Some of the most important:
 
 ### Chrome WebDriver
 
-**selenium-server-standalone-{VERSION}.jar** included the WebDriver for some browsers like Firefox. But if you want to run the tests using Chrome browser you have to download the ChromeDriver binary and specify it's location in *nightwath.json*
+**selenium-server-standalone-{VERSION}.jar** includes the WebDriver for some browsers like Firefox. But if you want to run the tests using Chrome browser you have to download the ChromeDriver binary and specify it's location in *nightwath.json*
 Also don't forget to specify chrome as the browser name in the desiredCapabilities property.
 
 ### Using Nightwatch
@@ -410,7 +415,7 @@ module.exports = {
 
 ### Using Mocha
 
-Nightwatch is bundled with a custom version of the popular Mocha test runner which allows running tests using Mocha, thus taking advantage of its interfaces and reporters
+Nightwatch is bundled with a custom version of the popular Mocha test runner which allows running tests using Mocha, thus taking advantage of its interfaces and reporters.
 This is done by specifying the "test_runner" option in the nightwatch.json configuration file.
 
 ```javascript
@@ -465,12 +470,12 @@ describe('Google demo test for Mocha', function() {
 
 ## 3. Unit test with gulp tasks
 
-Running the E2E tests through a gulp task (in chrome_env enviroment). Don't foget the app has to be up and running before launch the e2e gulp task
+Running the E2E tests through a gulp task (in chrome_env enviroment). Don't foget the app has to be up and running before launch the e2e gulp task. That's why a *conect task* is run before *e2e task*
 
 ```javascript
 var nightwatch = require('gulp-nightwatch');
 
-gulp.task('e2e', function() {
+gulp.task('e2e', ['connect'], function() {
   return gulp.src('')
     .pipe(nightwatch({
       configFile: 'nightwatch.json',
