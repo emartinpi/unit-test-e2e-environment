@@ -20,7 +20,7 @@ describe('Demo E2E', function() {
       client.expect.element('#calculate').to.be.present.before(1000);
     })
 
-    it('add/subtract/multiply/divide behaviours', function(client, done) {
+    it('add, subtract, multiply and divide behaviours', function(client, done) {
       client
         .setValue('#input1', 12)
         .setValue('#input2', 3)
