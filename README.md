@@ -470,12 +470,17 @@ describe('Google demo test for Mocha', function() {
 
 ## 3. Unit test with gulp tasks
 
-Running the E2E tests through a gulp task (in chrome_env enviroment). Don't foget the app has to be up and running before launch the e2e gulp task. That's why a *conect task* is run before *e2e task*
+Running the E2E tests through a gulp task (in chrome_env enviroment)
 
 ```javascript
 var nightwatch = require('gulp-nightwatch');
 
-gulp.task('e2e', ['connect'], function() {
+gulp.task('e2e', function() {
+  connect.server({
+    root: '.',
+    port: 8081,
+    livereload: false
+  });
   return gulp.src('')
     .pipe(nightwatch({
       configFile: 'nightwatch.json',

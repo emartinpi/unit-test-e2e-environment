@@ -17,7 +17,12 @@ gulp.task('specs', function(done) {
 /**
  * Run E2E test through Selenium
  */
-gulp.task('e2e', ['connect'], function() {
+gulp.task('e2e', function() {
+  connect.server({
+    root: '.',
+    port: 8081,
+    livereload: false
+  });
   return gulp.src('')
     .pipe(nightwatch({
       configFile: 'nightwatch.json',
