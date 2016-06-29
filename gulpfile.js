@@ -23,10 +23,14 @@ gulp.task('e2e', function() {
     port: 8081,
     livereload: false
   });
+  
   return gulp.src('')
     .pipe(nightwatch({
       configFile: 'nightwatch.json',
-      cliArgs: ['--env chrome_env']}));
+      cliArgs: ['--env chrome_env']}))
+    .on('end', function() {
+      connect.serverClose();
+    });
 });
 
 /**
