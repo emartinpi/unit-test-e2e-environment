@@ -6,7 +6,7 @@
  * @returns {Number}
  */
 function add(n1, n2) {
-    if (typeof n1 !== 'number' || typeof n2 !== 'number') {
+    if (isNaN(n1) || isNaN(n2)) {
         throw new Error('Parameters must be numbers');
     }
     return n1 + n2;
@@ -20,7 +20,7 @@ function add(n1, n2) {
  * @returns {Number}
  */
 function subtract(n1, n2) {
-    if (typeof n1 !== 'number' || typeof n2 !== 'number') {
+    if (isNaN(n1) || isNaN(n2)) {
         throw new Error('Parameters must be numbers');
     }
     return n1 - n2;
@@ -34,7 +34,7 @@ function subtract(n1, n2) {
  * @returns {Number}
  */
 function multiply(n1, n2) {
-    if (typeof n1 !== 'number' || typeof n2 !== 'number') {
+    if (isNaN(n1) || isNaN(n2)) {
         throw new Error('Parameters must be numbers');
     }
     return n1 * n2;
@@ -48,7 +48,7 @@ function multiply(n1, n2) {
  * @returns {Number} (two decimals max)
  */
 function divide(n1, n2) {
-    if (typeof n1 !== 'number' || typeof n2 !== 'number') {
+    if (isNaN(n1) || isNaN(n2)) {
         throw new Error('Parameters must be numbers');
     }
 
