@@ -15,7 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js',
+      'node_modules/chai/chai.js',
+      'node_modules/sinon/pkg/sinon.js',
+      'node_modules/es6-promise/dist/es6-promise.js',
       'src/**/*.js',
       'specs/**/*.js'
     ],

@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "chai": "*",
+    "chai": "^3.5.0",
+    "es6-promise": "^3.2.1",
     "gulp": "^3.9.1",
     "gulp-connect": "^4.0.0",
     "gulp-nightwatch": "^0.2.9",
@@ -21,6 +22,7 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "mocha": "^2.5.3",
     "opn": "^4.0.2",
-    "phantomjs-prebuilt": ">=1.9"
+    "phantomjs-prebuilt": ">=1.9",
+    "sinon": "^1.17.4"
   }
 }
