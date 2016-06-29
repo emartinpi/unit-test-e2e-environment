@@ -11,6 +11,7 @@ This guide shows you the basics to create an environment where you can test your
 
     - [Mocha](https://mochajs.org/), a test framework with sopport for BDD and TDD
     - [Chai](http://chaijs.com/) for assertion types than can be used with Mocha
+    - [Sinon.JS](http://sinonjs.org/) for test spies, stubs and mocks
     - [Karma](https://karma-runner.github.io/0.13/index.html), a test runner. A js command line tool to spawn a web server which loads your app source code and executes your test
     - [PhamtomJS](http://phantomjs.org/), a Webkit scriptable, headless browser used for automating web page interaction
     - [Istambul](https://github.com/gotwarlost/istanbul), a js code coverage tool that computes statement line, functions and branchs
@@ -39,7 +40,7 @@ The command above  will install the next devDependencies from package.json file 
 - [karma-mocha-reporter](https://github.com/litixsoft/karma-mocha-reporter), a plugin to report with mocha style logging
 - [gulp-nightwatch](https://www.npmjs.com/package/gulp-nightwatch), a gulp plugin for Nightwatch.js
 
-The rest of tools in package.json are for gulp tasks: create web server, livereloading, open browser...
+The rest of tools in package.json are for gulp tasks like create web server, livereloading, open browser... or a promises polyfill, etc.
 
 ## Up and running
 
@@ -179,7 +180,23 @@ while the TDD assert style provides a more classical feel.
     assert.lengthOf(tea.flavors, 3);
     ```
 
-## 4. Reporters
+## 4. Spies, Stubs and Mocks
+
+[Sinon.JS](http://sinonjs.org/) is a really helpfull library when you want to unit test your code. It has browser support and also can run on the server using Node.js
+
+- [Spies](http://sinonjs.org/docs/#spies)
+
+    A spy is a function that records arguments, return value, the value of this and exception thrown for all its calls. It can be an anonymous function or it can wrap an existing function
+
+- [Stubs](http://sinonjs.org/docs/#stubs)
+
+    A stub is also a spy but it is also a functions that has some predefinied behabiour. It is used when you want to fake some functionality
+
+- [Mocks](http://sinonjs.org/docs/#mocks)
+
+    A mock is like a stub and a spy but with a slight twist. With a mock you define up front all the things you want to expect, then when you are all done with your tests you assert that all those things happened as planned
+
+## 5. Reporters
 
   - *Spec* is the default reporter. The *spec* reporter outputs a hierarchical view nested just as the test cases are
 
@@ -203,15 +220,14 @@ before loading the test scripts, running them with *mocha.run()*
     <head>
         <meta charset="utf-8">
         <title>Mocha Tests</title>
-    	<link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
+    	<link href="../node_modules/mocha/mocha.css" rel="stylesheet" />
     </head>
     <body>
         <div id="mocha"></div>
 
-        
-
-        <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+        <script src="../node_modules/mocha/mocha.js"></script>
+        <script src="../node_modules/chai/chai.js"></script>
+        <script src="../node_modules/sinon/pkg/sinon.js"></script>
 
         <script>
             mocha.setup({
@@ -229,7 +245,7 @@ before loading the test scripts, running them with *mocha.run()*
 </html>
 ```
 
-## 5. Karma
+## 6. Karma
 
 Karma runs on Node.js and is available as an NPM package. The main goal for Karma is to bring a productive testing environment to developers where they don't have to set up loads of configurations.
 Karma is essentially a tool which spawns a web server that executes source code against test code for each of the browsers connected. 
@@ -265,7 +281,7 @@ Main plugin needed:
 - [karma-coverage](https://github.com/karma-runner/karma-coverage/) generate code coverage using [Istambul](https://github.com/gotwarlost/istanbul)
 
 
-## 6. PhantomJS
+## 7. PhantomJS
 
 PhantomJS is a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG.
 One major use case of PhantomJS is headless testing of web applications. It is suitable for general command-line based testing and as part of a continuous integration system.
@@ -273,7 +289,7 @@ One major use case of PhantomJS is headless testing of web applications. It is s
 To install PhantomJS via NPM use [phantomjs-prebuilt](https://www.npmjs.com/package/phantomjs-prebuilt). 
 What this installer is really doing is just grabbing a particular "blessed" (by this module) version of Phantom
 
-## 7. Istambul
+## 8. Istambul
 
 Istambum is a JS code coverage tool that computes statement, line, function and branch coverage with module loader hooks to transparently add coverage when running tests. 
 Supports all JS coverage use cases including unit tests, server side functional tests and browser tests.
@@ -312,7 +328,7 @@ module.exports = function(config) {
 };
 ```
 
-## 8. Unit test with gulp tasks
+## 9. Unit test with gulp tasks
 
 To launch the unit tests through a gulp task, just create a new Karma Server with its configuration file and start it
 
