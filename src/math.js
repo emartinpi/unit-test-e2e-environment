@@ -62,3 +62,20 @@ function divide(n1, n2) {
 
     return Math.round(n1 / n2 * 100) / 100
 }
+
+/**
+ * (Divide two numbers after 'time' ms. The result is with two dicimals max)
+ * 
+ * @param {Number} n1 
+ * @param {Number} n2
+ * @param {Number} miliseconds
+ * @returns {Promise} (The promise will be resolved after 'time' ms)
+ */
+function dividePlus1Promise(n1, n2, time) {
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            var res = divide(n1, n2) + 1;
+            resolve(res);
+        }, time);
+    });
+}

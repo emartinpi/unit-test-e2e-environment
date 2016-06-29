@@ -52,12 +52,39 @@ describe('Suite Test:', function() {
         it('divide by zero throws an error with an specific message', function() {
             expect(divide.bind(null, 5, 0)).to.throw(Error, 'Divide by zero is not posible');
         })
-    })
-});
+    });
 
-describe.skip('Trying skipped suite', function() {
-    it('should take less than 500ms', function(done){
-        this.timeout(10000);
-        setTimeout(done, 8000);
-    }); 
+    describe('dividePromise() context', function() {
+        before(function() {
+            sinon.stub(window, 'divide').withArgs(10, 2).returns(5);
+        });
+
+        after(function() {
+             window.divide.restore();
+        });
+
+        it('the callback should be called', function() {
+            var spyCallback = sinon.spy();
+
+            expect(spyCallback.called).to.be.false;
+            var promise = dividePlus1Promise(10, 2, 1000)
+                .then(spyCallback);
+
+            setTimeout(function(){
+                expect(spyCallback.called).to.be.true;
+            }, 1100);
+
+            // the promise is returned to mocha can handle it. If promise is rejected the test will fail
+            return promise;
+        });
+
+        it('should returns the division plus 1', function() {
+            var promise = dividePlus1Promise(10, 2, 1000)
+                .then(function(res) {
+                    expect(res).to.be.equal(6);
+                });
+
+            return promise;
+        });
+    });
 });
